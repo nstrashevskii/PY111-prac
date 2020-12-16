@@ -39,8 +39,7 @@ def peek(ind: int = 0) -> Any:
     if ind > len(my_queue) or ind < 0:
         return None
     else:
-        print(my_queue[-1 - ind])
-    return None
+        return my_queue[-1 - ind]
 
 
 def clear() -> None:
