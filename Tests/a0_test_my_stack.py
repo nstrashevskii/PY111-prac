@@ -1,5 +1,5 @@
 import unittest
-import Tasks.a0_my_stack as my_stack
+import PY111_prac.Tasks.a0_my_stack as my_stack
 
 
 class MyTestCase(unittest.TestCase):
