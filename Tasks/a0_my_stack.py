@@ -34,10 +34,7 @@ def peek(ind: int = 0) -> Any:
     :param ind: index of element (count from the top, 0 - top, 1 - first from top, etc.)
     :return: peeked element or None if no element in this place
     """
-    if ind >= len(my_stack) or ind < 0:
-        return None
-    else:
-        return my_stack[-1-ind]
+    return None if ind >= len(my_stack) or ind < 0 else my_stack[-1-ind]
 
 
 def clear() -> None:
@@ -52,3 +49,4 @@ def clear() -> None:
 
 if __name__ == '__main__':
     ...
+
