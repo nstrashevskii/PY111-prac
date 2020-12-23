@@ -17,5 +17,15 @@ def fib_iterative(n: int) -> int:
     :param n: number of item
     :return: Fibonacci number
     """
-    print(n)
-    return 0
+    n1 = 1
+    n2 = 1
+    if n < 0:
+        raise ValueError
+
+    if n < 2:
+        return 1
+    for i in range(2, n):
+        n_sum = n1 + n2
+        n1 = n2
+        n2 = n_sum
+    return n2
