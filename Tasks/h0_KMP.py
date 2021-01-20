@@ -38,8 +38,8 @@ def kmp_algo(inp_string: str, substr: str) -> Optional[int]:
     # 2. Если они равны - увеличиваем оба счетчика (и проверяем условие выхода)
     # 3. Если не равны – значит мы нашли несовпадение где-то в середине шаблона,
     # нужно вычислить, с какого символа шаблона нужно продолжать. `j = pi(j-1)`
-    pref_fun = _prefix_fun(substr)
-    i = j = 0
+    pref_fun = _prefix_fun(substr)  # префикс таблица
+    i = j = 0  # индексы элементов строки и подстроки
     while i < len(inp_string) and j < len(substr):
         if substr[j] == inp_string[i]:
             i += 1
