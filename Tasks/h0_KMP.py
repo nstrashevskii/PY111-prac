@@ -34,6 +34,21 @@ def kmp_algo(inp_string: str, substr: str) -> Optional[int]:
     :param substr: substr to be found in inp_string (needle)
     :return: index where first occurrence of substr in inp_string started or None if not found
     """
-
-    print(inp_string, substr, _prefix_fun)
+    # 1. Сравниваем `i-й` элемент строки и `j-й` элемент шаблона
+    # 2. Если они равны - увеличиваем оба счетчика (и проверяем условие выхода)
+    # 3. Если не равны – значит мы нашли несовпадение где-то в середине шаблона,
+    # нужно вычислить, с какого символа шаблона нужно продолжать. `j = pi(j-1)`
+    pref_fun = _prefix_fun(substr)
+    i = j = 0
+    while i < len(inp_string) and j < len(substr):
+        if substr[j] == inp_string[i]:
+            i += 1
+            j += 1
+        elif j == 0:
+            i += 1
+        else:
+            j = pref_fun[j - 1]
+    else:
+        if j == len(substr):
+            return i - j
     return None
