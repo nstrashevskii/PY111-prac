@@ -47,3 +47,20 @@ def search_book(lib: json, name: (str, None), year: (int, None), pages: (int, No
         return library[get_key(author)]
     else:
         return None
+
+
+def edit_book(lib: json, number: int, name: (str, None), year: (int, None), pages: (int, None), author: (str, None))\
+        -> json:
+    library = library_load_from_json(lib)
+    book = library[str(number)]
+    if name is not None:
+        book["name"] = name
+    elif year is not None:
+        book["year"] = year
+    elif pages is not None:
+        book["pages"] = pages
+    elif author is not None:
+        book["author"] = author
+
+    library[str(number)] = book
+    return library_load_to_json(lib, library)
