@@ -14,9 +14,14 @@ def library_load_to_json(lib: json, library: dict) -> json:
 
 
 def del_book(lib: json, number: int) -> json:
+    new_key = 0
+    new_library = {}
     library = library_load_from_json(lib)
     del library[str(number)]
-    new_lib = library_load_to_json(lib, library)
+    for key, value in library.items():
+        new_key += 1
+        new_library[new_key] = value
+    new_lib = library_load_to_json(lib, new_library)
     return new_lib
 
 
