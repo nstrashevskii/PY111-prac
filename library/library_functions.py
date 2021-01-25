@@ -43,6 +43,15 @@ def del_book(lib: json, number: int) -> json:
 
 def search_book(lib: json, name: (str, None) = None, year: (int, None) = None,
                 pages: (int, None) = None, author: (str, None) = None) -> (dict, None):
+    """
+
+    :param lib: файл библиотеки
+    :param name: название книги
+    :param year: год издания книги
+    :param pages: колличество страниц книги
+    :param author: автор книги
+    :return: словарь с совпадениями
+    """
     library = library_load_from_json(lib)
     library_new = {}
     if name is not None:
@@ -70,6 +79,15 @@ def search_book(lib: json, name: (str, None) = None, year: (int, None) = None,
 
 def edit_book(lib: json, number: int, name: (str, None), year: (int, None), pages: (int, None), author: (str, None))\
         -> json:
+    """
+
+    :param lib: файл библиотеки
+    :param name: название книги
+    :param year: год издания книги
+    :param pages: колличество страниц книги
+    :param author: автор книги
+    :return: библиотеку с изменениями
+    """
     library = library_load_from_json(lib)
     book = library[str(number)]
     if name is not None:
