@@ -48,7 +48,6 @@ def del_():
 
 
 def search_():
-    global name, year, pages, author
     library = library_load_from_json('books.json')
     i = 0
     menu_for_search()
