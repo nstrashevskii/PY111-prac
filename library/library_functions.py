@@ -2,18 +2,34 @@ import json
 
 
 def library_load_from_json(lib: json) -> dict:
+    """
+    загрузка библиотеки из файла json
+    :param lib: файл библиотеки
+    :return: словарь с библиотекой из файла
+    """
     with open(lib, 'r') as f:
-        library = json.load(f)
+        library: dict = json.load(f)
     return library
 
 
 def library_load_to_json(lib: json, library: dict) -> json:
+    """
+    загрузка библиотеки в файла json
+    :param library: словарь с библиотекой
+    :param lib: файл библиотеки
+    :return: файла json с библиотекой из словаря
+    """
     with open(lib, 'w') as f:
         json.dump(library, f, indent=4)
     return lib
 
 
 def del_book(lib: json, number: int) -> json:
+    """
+    :param lib: файл библиотеки
+    :param number: номер книги для удаления
+    :return: новый файл библиотеки, после удаления книги
+    """
     new_key = 0
     new_library = {}
     library = library_load_from_json(lib)
@@ -25,28 +41,31 @@ def del_book(lib: json, number: int) -> json:
     return new_lib
 
 
-def get_key(val_):
-    library = library_load_from_json('books.json')
-    for key, value in library.items():
-        for key_, value_ in value.items():
-            if val_ == value_:
-                return key
-    return "book doesn't not exist"
-
-
-def search_book(lib: json, name: (str, None), year: (int, None), pages: (int, None), author: (str, None))\
-        -> (dict, None):
+def search_book(lib: json, name: (str, None) = None, year: (int, None) = None,
+                pages: (int, None) = None, author: (str, None) = None) -> (dict, None):
     library = library_load_from_json(lib)
+    library_new = {}
     if name is not None:
-        return library[get_key(name)]
+        for key, value in library.items():
+            for key_, value_ in value.items():
+                if name == value_:
+                    library_new[key] = library[key]
     elif year is not None:
-        return library[get_key(year)]
+        for key, value in library.items():
+            for key_, value_ in value.items():
+                if year == value_:
+                    library_new[key] = library[key]
     elif pages is not None:
-        return library[get_key(pages)]
+        for key, value in library.items():
+            for key_, value_ in value.items():
+                if pages == value_:
+                    library_new[key] = library[key]
     elif author is not None:
-        return library[get_key(author)]
-    else:
-        return None
+        for key, value in library.items():
+            for key_, value_ in value.items():
+                if author == value_:
+                    library_new[key] = library[key]
+    return library_new
 
 
 def edit_book(lib: json, number: int, name: (str, None), year: (int, None), pages: (int, None), author: (str, None))\

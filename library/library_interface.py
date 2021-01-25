@@ -48,17 +48,23 @@ def del_():
 
 
 def search_():
+    global name, year, pages, author
+    library = library_load_from_json('books.json')
+    i = 0
     menu_for_search()
     param_search = input_my(4)
     if param_search == 1:
-        print(search_book('books.json', name=input(f'Введите название книги\n'), year=None, pages=None, author=None))
+        name = input(f'Введите название книги\n')
+        print(search_book('books.json', name))
     elif param_search == 2:
-        print(search_book('books.json', name=None, year=input(f'Введите год издания книги\n'), pages=None, author=None))
+        year = input(f'Введите год издания книги\n')
+        print(search_book('books.json', year))
     elif param_search == 3:
-        print(search_book('books.json', name=None, year=None, pages=input(f'Введите колличество страниц книги\n'),
-                          author=None))
+        pages = input(f'Введите колличество страниц книг\n')
+        print(search_book('books.json', pages))
     elif param_search == 4:
-        print(search_book('books.json', name=None, year=None, pages=None, author=input(f'Введите автора книги\n')))
+        author = input(f'Введите автора книги\n')
+        print(search_book('books.json', author))
 
 
 def edit_():
@@ -67,19 +73,19 @@ def edit_():
     number_book = input_my(len(library))
     menu_for_edit()
     param_number = input_my(4)
-    if (number_book == 1 and param_number == 1) or (number_book == 2 and param_number == 1) or\
+    if (number_book == 1 and param_number == 1) or (number_book == 2 and param_number == 1) or \
             (number_book == 3 and param_number == 1) or (number_book == 4 and param_number == 1):
         print(edit_book('books.json', number=number_book, name=input(f'Введите новое название книги\n'),
                         year=None, pages=None, author=None))
-    elif (number_book == 1 and param_number == 2) or (number_book == 2 and param_number == 2)\
+    elif (number_book == 1 and param_number == 2) or (number_book == 2 and param_number == 2) \
             or (number_book == 3 and param_number == 2) or (number_book == 4 and param_number == 2):
         print(edit_book('books.json', number=number_book, name=None, year=input(f'Введите год издания книги\n'),
                         pages=None, author=None))
-    elif (number_book == 1 and param_number == 3) or (number_book == 2 and param_number == 3)\
+    elif (number_book == 1 and param_number == 3) or (number_book == 2 and param_number == 3) \
             or (number_book == 3 and param_number == 3) or (number_book == 4 and param_number == 3):
         print(edit_book('books.json', number=number_book, name=None, year=None,
                         pages=input(f'Введите колличество страниц книги\n'), author=None))
-    elif (number_book == 1 and param_number == 4) or (number_book == 2 and param_number == 4)\
+    elif (number_book == 1 and param_number == 4) or (number_book == 2 and param_number == 4) \
             or (number_book == 3 and param_number == 4) or (number_book == 4 and param_number == 4):
         print(edit_book('books.json', number=number_book, name=None, year=None, pages=None,
                         author=input(f'Введите автора книги\n')))
