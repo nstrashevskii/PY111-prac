@@ -67,52 +67,20 @@ def edit_():
     number_book = input_my(len(library))
     menu_for_edit()
     param_number = input_my(4)
-    if number_book == 1 and param_number == 1:
+    if (number_book == 1 and param_number == 1) or (number_book == 2 and param_number == 1) or\
+            (number_book == 3 and param_number == 1) or (number_book == 4 and param_number == 1):
         print(edit_book('books.json', number=number_book, name=input(f'Введите новое название книги\n'),
                         year=None, pages=None, author=None))
-    elif number_book == 1 and param_number == 2:
+    elif (number_book == 1 and param_number == 2) or (number_book == 2 and param_number == 2)\
+            or (number_book == 3 and param_number == 2) or (number_book == 4 and param_number == 2):
         print(edit_book('books.json', number=number_book, name=None, year=input(f'Введите год издания книги\n'),
                         pages=None, author=None))
-    elif number_book == 1 and param_number == 3:
+    elif (number_book == 1 and param_number == 3) or (number_book == 2 and param_number == 3)\
+            or (number_book == 3 and param_number == 3) or (number_book == 4 and param_number == 3):
         print(edit_book('books.json', number=number_book, name=None, year=None,
                         pages=input(f'Введите колличество страниц книги\n'), author=None))
-    elif number_book == 1 and param_number == 4:
-        print(edit_book('books.json', number=number_book, name=None, year=None, pages=None,
-                        author=input(f'Введите автора книги\n')))
-    elif number_book == 2 and param_number == 1:
-        print(edit_book('books.json', number=number_book, name=input(f'Введите новое название книги\n'),
-                        year=None, pages=None, author=None))
-    elif number_book == 2 and param_number == 2:
-        print(edit_book('books.json', number=number_book, name=None, year=input(f'Введите год издания книги\n'),
-                        pages=None, author=None))
-    elif number_book == 2 and param_number == 3:
-        print(edit_book('books.json', number=number_book, name=None, year=None,
-                        pages=input(f'Введите колличество страниц книги\n'), author=None))
-    elif number_book == 2 and param_number == 4:
-        print(edit_book('books.json', number=number_book, name=None, year=None, pages=None,
-                        author=input(f'Введите автора книги\n')))
-    elif number_book == 3 and param_number == 1:
-        print(edit_book('books.json', number=number_book, name=input(f'Введите новое название книги\n'),
-                        year=None, pages=None, author=None))
-    elif number_book == 3 and param_number == 2:
-        print(edit_book('books.json', number=number_book, name=None, year=input(f'Введите год издания книги\n'),
-                        pages=None, author=None))
-    elif number_book == 3 and param_number == 3:
-        print(edit_book('books.json', number=number_book, name=None, year=None,
-                        pages=input(f'Введите колличество страниц книги\n'), author=None))
-    elif number_book == 3 and param_number == 4:
-        print(edit_book('books.json', number=number_book, name=None, year=None, pages=None,
-                        author=input(f'Введите автора книги\n')))
-    elif number_book == 4 and param_number == 1:
-        print(edit_book('books.json', number=number_book, name=input(f'Введите новое название книги\n'),
-                        year=None, pages=None, author=None))
-    elif number_book == 4 and param_number == 2:
-        print(edit_book('books.json', number=number_book, name=None, year=input(f'Введите год издания книги\n'),
-                        pages=None, author=None))
-    elif number_book == 4 and param_number == 3:
-        print(edit_book('books.json', number=number_book, name=None, year=None,
-                        pages=input(f'Введите колличество страниц книги\n'), author=None))
-    elif number_book == 4 and param_number == 4:
+    elif (number_book == 1 and param_number == 4) or (number_book == 2 and param_number == 4)\
+            or (number_book == 3 and param_number == 4) or (number_book == 4 and param_number == 4):
         print(edit_book('books.json', number=number_book, name=None, year=None, pages=None,
                         author=input(f'Введите автора книги\n')))
     p = input(f'Продолжить редактирование? Y/N:\n').capitalize()
