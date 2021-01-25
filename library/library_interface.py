@@ -2,13 +2,6 @@ import re
 from library.library_functions import del_book, library_load_from_json, library_load_to_json, search_book, edit_book
 
 
-def input_my(k: int):
-    s = input(f'Введите число от 1 до {k}:\n')
-    while s.isdigit() is False or (int(s) <= 0 or int(s) > k):
-        s = input(f'Не верно. Введите число от 1 до 4:\n')
-    return int(s)
-
-
 def menu():
     print(f'Выберете дествие\n')
     print(f'1) Добавить книгу\n')
@@ -33,9 +26,43 @@ def menu_for_edit():
     print(f'4) Автор книги\n')
 
 
+def input_my(k: int):
+    s = input(f'Введите число от 1 до {k}:\n')
+    while s.isdigit() is False or (int(s) <= 0 or int(s) > k):
+        s = input(f'Не верно. Введите число от 1 до 4:\n')
+    return int(s)
+
+
+def input_author():
+    pattern_author = re.compile(r'\b[A-Z]\w+\b\s\b[A-Z]\w+\b')
+    author = input(f'Введите автора книги (Имя Фамилия)\n')
+    while re.match(pattern_author, author) is None:
+        author = input(f'Не верно! Введите автора книги (Имя Фамилия)\n')
+    else:
+        return author
+
+
+def input_year():
+    pattern_year = re.compile(r'[1-9]\d{3}')
+    year = input(f'Введите год издания книги (4 цифры)\n')
+    while re.match(pattern_year, year) is None:
+        year = input(f'Не верно! Введите год издания книги (4 цифры)\n')
+    else:
+        return year
+
+
+def input_pages():
+    pattern_pages = re.compile(r'[0-9]/*')
+    pages = input(f'Введите колличество страниц книги (только цифры)\n')
+    while re.match(pattern_pages, pages) is None:
+        pages = input(f'Не верно! Введите колличество страниц книги (только цифры)\n')
+    else:
+        return pages
+
+
 def add_():
-    new_book = {'name': input(f'Введите название книги\n'), 'year': input(f'Введите год издания книги\n'),
-                'pages': input(f'Введите колличество страниц в книге\n'), 'author': input(f'Введите автора книги\n')}
+    new_book = {'name': input(f'Введите название книги\n'), 'year': input_year(),
+                'pages': input_pages(), 'author': input_author()}
     library = library_load_from_json('books.json')
     number = str(len(library) + 1)
     library[number] = new_book

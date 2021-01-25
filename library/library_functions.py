@@ -33,6 +33,7 @@ def del_book(lib: json, number: int) -> json:
     new_key = 0
     new_library = {}
     library = library_load_from_json(lib)
+    print(f'Удалена книга {library[str(number)]} \n')
     del library[str(number)]
     for key, value in library.items():
         new_key += 1
