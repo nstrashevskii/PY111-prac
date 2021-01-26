@@ -5,8 +5,6 @@ import networkx as nx
 # all_way = [[2A, 7B, 9C, 3D],
 #            [12E, 4F, 1G, 9H],
 #            [1I, 5J, 2K, 5L]]
-#
-#
 
 
 def min_way(edge: list, node_1: str, node_2: str):
@@ -18,11 +16,18 @@ def min_way(edge: list, node_1: str, node_2: str):
 #  2. поиск в глубину(ищем компонент связанности) посмотреть что такое компонент связанности
 
 
-# def count_connected(G: nx.Graph) -> int:
-#     nx.bfs_tree()  # поиск в ширину
-#     nx.dfs_tree()  # поиск в глубину
-
-
+def count_connected():
+    G = nx.Graph()
+    G.add_nodes_from("ABCDEFG")  # инициализация вершин
+    G.add_edges_from([('A', 'B'), ('B', 'C'), ('C', 'D'), ('F', 'G')]) # ребра
+    comps = nx.connected_components(G)
+    l_comps = []
+    i = 0
+    for j in comps:
+        i += 1
+        l_comps.append(j)
+        print(f'{i} комонента связности графа {j} равна {len(j)}')
+    return l_comps
 # if __name__ == '__main__':
 #     g = nx.DiGraph()
 #     g.add_nodes_from("ABCDEFG")  # инициализация вершин
@@ -52,6 +57,7 @@ def min_way(edge: list, node_1: str, node_2: str):
 # g1 = nx.MultiDiGraph()
 
 if __name__ == '__main__':
+    print(f'Задача №1 построить самый дешевый путь')
     e = [('A', 'B', 9), ('B', 'C', 9), ('C', 'D', 3), ('A', 'E', 14), ('E', 'I', 1), ('B', 'F', 4), ('F', 'J', 5),
          ('C', 'G', 1), ('G', 'K', 2), ('D', 'H', 9), ('H', 'L', 5), ('E', 'F', 4), ('F', 'G', 1), ('G', 'H', 9),
          ('I', 'J', 5), ('J', 'K', 2), ('K', 'L', 5)]
@@ -77,4 +83,5 @@ if __name__ == '__main__':
             l5.append(i[2])
     weight = min(l1) + min(l2) + min(l3) + min(l4) + min(l5)
     print(weight)
-    nx.single_source_dijkstra()
+    print(f'Задача №2 компоненты связности')
+    count_connected()
