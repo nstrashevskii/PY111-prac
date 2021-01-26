@@ -19,7 +19,7 @@ def min_way(edge: list, node_1: str, node_2: str):
 def count_connected():
     G = nx.Graph()
     G.add_nodes_from("ABCDEFG")  # инициализация вершин
-    G.add_edges_from([('A', 'B'), ('B', 'C'), ('C', 'D'), ('F', 'G')]) # ребра
+    G.add_edges_from([('A', 'B'), ('B', 'C'), ('C', 'D'), ('F', 'G')])  # ребра
     comps = nx.connected_components(G)
     l_comps = []
     i = 0
@@ -28,16 +28,6 @@ def count_connected():
         l_comps.append(j)
         print(f'{i} комонента связности графа {j} равна {len(j)}')
     return l_comps
-# if __name__ == '__main__':
-#     g = nx.DiGraph()
-#     g.add_nodes_from("ABCDEFG")  # инициализация вершин
-#     g.add_edges_from([('A', 'B'), ('B', 'C'), ('C', 'D'), ('F', 'G')])
-#     print(g.adj)
-#     for node, edges in g.adj.items():
-#         print(node, edges)
-#
-#     count = count_connected(g)
-#     assert count == 3
 
 
 # 3. Вы – компания, дающая в аренду ракеты.
@@ -55,6 +45,22 @@ def count_connected():
 # граф мульти-направленный(больше чем одна связь), не можем удовлетворить заявку когда колличество
 # исходящих связей из одной вершины больше чем одна(исходящая степень(degree) вершины больше 1)
 # g1 = nx.MultiDiGraph()
+
+
+def rocket(intervals: dict) -> bool:
+    # G = nx.MultiDiGraph()
+    # G.add_nodes_from(h)
+    # G.add_edges_from(intervals)
+    starts = []
+    for j in intervals:
+        starts.append(j[0])
+    for i in range(len(starts) - 1):
+        for j in range(i+1, len(starts)):
+            if starts[i] == starts[j]:
+                print('Аренда невозможна, расписание составлено некорректно')
+                quit()
+    print('Все хорошо, аренда возможна')
+
 
 if __name__ == '__main__':
     print(f'Задача №1 построить самый дешевый путь')
@@ -85,3 +91,6 @@ if __name__ == '__main__':
     print(weight)
     print(f'Задача №2 компоненты связности')
     count_connected()
+    print(f'Задача №3 аренда ракеты')
+    int_ = [(1, 2), (3, 4), (3, 7)]
+    rocket(int_)
