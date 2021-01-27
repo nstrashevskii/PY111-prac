@@ -47,7 +47,7 @@ def count_connected():
 # g1 = nx.MultiDiGraph()
 
 
-def rocket(intervals: dict) -> bool:
+def rocket(intervals: list) -> None:
     # G = nx.MultiDiGraph()
     # G.add_nodes_from(h)
     # G.add_edges_from(intervals)
