@@ -27,6 +27,7 @@ def count_connected():
         i += 1
         l_comps.append(j)
         print(f'{i} комонента связности графа {j} равна {len(j)}')
+    print(f'Всего компонент связности {i}')
     return l_comps
 
 
