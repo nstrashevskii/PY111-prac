@@ -1,4 +1,5 @@
 import networkx as nx
+from Tasks.a0_my_stack import peek
 
 
 def min_way(edge: list, node_1: str, node_2: str):
@@ -38,14 +39,23 @@ def count_connected():
 
 
 def schitalka(n: int, k: int) -> int:
-    list_people = [i for i in range(1, n)]
-    list_slog = [j for j in range(1, k)]
-    for v in range(1, k):
-
-        if v == list_slog[k]:
+    list_people = [i for i in range(1, n + 1)]
+    list_slog = [j for j in range(1, k + 1)]
+    m = 0
+    while True:
+        for v in range(1, k + 1):
+            if len(list_people) <= len(list_slog):
+                return list_people[0]
+            if v == list_slog[k - 1]:
+                del list_people[m]
+                m = 0
+            m += 1
 
 
 if __name__ == '__main__':
+    print(f'Задача №2 считалка')
+    print('-------------')
+    print(schitalka(10, 5))
     print(f'Задача №4 построить самый дешевый путь')
     e = [('A', 'B', 9), ('B', 'C', 9), ('C', 'D', 3), ('A', 'E', 14), ('E', 'I', 1), ('B', 'F', 4), ('F', 'J', 5),
          ('C', 'G', 1), ('G', 'K', 2), ('D', 'H', 9), ('H', 'L', 5), ('E', 'F', 4), ('F', 'G', 1), ('G', 'H', 9),
@@ -79,3 +89,4 @@ if __name__ == '__main__':
     print(f'Задача №6 аренда ракеты')
     int_ = [(1, 2), (3, 4), (3, 7)]
     rocket(int_)
+
